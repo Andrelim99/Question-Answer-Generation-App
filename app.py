@@ -3,7 +3,7 @@ from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.encoders import jsonable_encoder
-from langchain.chat_models import ChatOpenAI
+from langchain.chat_models import vertexai, openai
 from langchain.chains import QAGenerationChain
 from langchain.text_splitter import TokenTextSplitter
 from langchain.docstore.document import Document
@@ -20,6 +20,7 @@ import uvicorn
 import aiofiles
 from PyPDF2 import PdfReader
 import csv
+
 
 app = FastAPI()
 
@@ -77,7 +78,8 @@ def file_processing(file_path):
 def llm_pipeline(file_path):
 
     document_ques_gen, document_answer_gen = file_processing(file_path)
-
+    # openai.ChatOpenAI
+    # vertexai.ChatVertexAI
     llm_ques_gen_pipeline = ChatOpenAI(
         temperature = 0.3,
         model = "gpt-3.5-turbo"

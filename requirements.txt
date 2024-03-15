@@ -8,3 +8,6 @@ uvicorn
 jinja2
 python-multipart
 PyPDF2
+langchain-google-vertexai
+vertexai
+chromadb
